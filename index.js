@@ -1,6 +1,6 @@
-function linearSearch(arr, target) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === target) return i;
+const fibonacciRecursive = (n) => {
+  if (n <= 1) {
+    return n;
   }
-  return -1;
-}
+  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+};
