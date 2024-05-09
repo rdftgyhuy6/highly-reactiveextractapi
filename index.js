@@ -1,6 +1,13 @@
-const fibonacciRecursive = (n) => {
-  if (n <= 1) {
-    return n;
+function jump(nums) {
+  let jumps = 0;
+  let currentEnd = 0;
+  let farthest = 0;
+  for (let i = 0; i < nums.length - 1; i++) {
+    farthest = Math.max(farthest, i + nums[i]);
+    if (i === currentEnd) {
+      jumps++;
+      currentEnd = farthest;
+    }
   }
-  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
-};
+  return jumps;
+}
