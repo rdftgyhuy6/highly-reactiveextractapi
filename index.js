@@ -1,10 +1,18 @@
-function numSquares(n) {
-  const dp = new Array(n + 1).fill(Infinity);
-  dp[0] = 0;
-  for (let i = 1; i <= n; i++) {
-    for (let j = 1; j * j <= i; j++) {
-      dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
-    }
+const binarySearchRecursive = (
+  arr,
+  target,
+  left = 0,
+  right = arr.length - 1,
+) => {
+  if (left > right) {
+    return -1;
   }
-  return dp[n];
-}
+  const mid = Math.floor((left + right) / 2);
+  if (arr[mid] === target) {
+    return mid;
+  } else if (arr[mid] < target) {
+    return binarySearchRecursive(arr, target, mid + 1, right);
+  } else {
+    return binarySearchRecursive(arr, target, left, mid - 1);
+  }
+};
