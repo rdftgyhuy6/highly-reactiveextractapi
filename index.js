@@ -1,35 +1,14 @@
-const cycleSort = (arr) => {
-  for (let start = 0; start < arr.length - 1; start++) {
-    let item = arr[start];
-    let pos = start;
-    for (let i = start + 1; i < arr.length; i++) {
-      if (arr[i] < item) {
-        pos++;
-      }
-    }
-    if (pos === start) {
-      continue;
-    }
-    while (item === arr[pos]) {
-      pos++;
-    }
-    if (pos !== start) {
-      [item, arr[pos]] = [arr[pos], item];
-    }
-    while (pos !== start) {
-      pos = start;
-      for (let i = start + 1; i < arr.length; i++) {
-        if (arr[i] < item) {
-          pos++;
-        }
-      }
-      while (item === arr[pos]) {
-        pos++;
-      }
-      if (item !== arr[pos]) {
-        [item, arr[pos]] = [arr[pos], item];
-      }
-    }
+const insertionSortRecursive = (arr, n = arr.length) => {
+  if (n <= 1) {
+    return arr;
   }
+  insertionSortRecursive(arr, n - 1);
+  const last = arr[n - 1];
+  let j = n - 2;
+  while (j >= 0 && arr[j] > last) {
+    arr[j + 1] = arr[j];
+    j--;
+  }
+  arr[j + 1] = last;
   return arr;
 };
